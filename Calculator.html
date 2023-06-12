@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.ico" />
+	    <title>Apothem | Calculator</title>
+
+	    <!-- Bootstrap -->
+	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+	    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+	    <link rel="stylesheet" href="./styles/style.css">
+	    <script src="js/calculator.js"></script>
+	    <script src="js/Libraries/nerdamer.min.js"></script>
+
+	    <style type="text/css">
+	    	.leftSide{
+	    		margin-left: 30%;
+	    		background-color: skyblue;
+	    	}
+	    	#output{
+	    		margin-left: 30%;
+	    		margin-bottom: 2%;
+	    		font-size: 200%;
+	    		width: 40%;
+	    		text-align: left;
+	    		border-color: black;
+	    		margin-top: 5%;
+	    	}
+	    	.rightSide{
+	    		margin-left: 4%;
+	    	}
+	    	button{
+	    		width: 5%;
+	    		font-size: 200%;
+	    		margin-left: -0.2%;
+	    		border-color: lightgray;
+	    		border-width: 0.5px;
+	    	}
+	    	button:hover{
+	    		border-width: 1px;
+	    		border-color: black;
+	    	}
+	    	.eval{
+	    		margin-top: 2%;
+	    		margin-left: 45%;
+	    		width: 10%;
+	    	}
+	    	#xButton{
+	    		background-color: orange; 
+	    		visibility: hidden;
+	    		width: 10%;
+	    		margin-top: 2%;
+	    		margin-left: 30%;
+	    	}
+	    	#yButton{
+	    		background-color: orange; 
+	    		visibility: hidden;
+	    		width: 10%;
+	    		margin-top: 2%;
+	    		margin-left: 4.8%;
+	    	}
+	    	#zButton{
+	    		background-color: orange; 
+	    		visibility: hidden;
+	    		width: 10%;
+	    		margin-top: 2%;
+	    		margin-left: 4.8%;
+	    	}
+	    	#answer{
+	    		visibility: hidden;
+	    		margin-left: 30%;
+	    		margin-top: 2%;
+	    		font-size: 200%;
+	    		width: 40%;
+	    		text-align: left;
+	    		border-color: black;
+	    	}
+	    	.leftThings{
+	    		background-color: skyblue;
+	    	}
+	    </style>
+	</head>
+
+	<body>
+
+		<!-- NAVBAR -->
+
+		<nav class="navbar navbar-expand-lg navbar-light custom-colour">
+		  <div class="container-fluid">
+		    <span class="navbar-brand" href='/'>
+		    	<img id="logo" src="assets/images/logo.ico" alt="logo" height="40">
+		    	<a id="brand-name" href="index.html">Apothem</a>
+		   	</span>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" id="navbarNav">
+		      	<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			        <li class="nav-button-container">
+			          <a class="nav-button active-button" aria-current="page" href='PhotoSolver.html'>PHOTO</a>
+			        </li>
+					<li class="nav-button-container">
+						<a class="nav-button" href='Graphing.html'>GRAPHING</a>
+					</li>
+					<li class="nav-button-container">
+						<a class="nav-button" href='Calculator.html'>CALCULATORS</a>
+					</li>
+			        <li class="nav-button-container">
+			          <a class="nav-button" href='TriangleSolver.html'>TRIGONOMETRY</a>
+			        </li>
+	      		</ul>
+		    </div>
+		  </div>
+		</nav>
+		<div class="everything">
+			<div class="input">
+				<input id="output" type="text" placeholder="0"></input>
+			</div>
+			<div class="things">
+				<button class="leftSide" onclick="enterNum('(')">(</button>
+				<button class="leftThings" onclick="enterNotNum(')')">)</button>
+				<button class="leftThings" onclick="enterOp('^')">^</button>
+
+				<button class="rightSide" onclick="enterNum('7')">7</button>
+				<button onclick="enterNum('8')">8</button>
+				<button onclick="enterNum('9')">9</button>
+				<button onclick="enterOp('÷')" style="background-color: deepskyblue;">÷</button>
+			</div>
+			<div class="things">
+				<button class="leftSide" onclick="enterNotNum('Sin(')">Sin</button>
+				<button class="leftThings" onclick="enterNotNum('Cos(')">Cos</button>
+				<button class="leftThings" onclick="enterNotNum('Tan(')">Tan</button>
+
+				<button class="rightSide" onclick="enterNum('4')">4</button>
+				<button onclick="enterNum('5')">5</button>
+				<button onclick="enterNum('6')">6</button>
+				<button onclick="enterOp('*')" style="background-color: deepskyblue;">x</button>
+			</div>
+			<div class="things">
+				<button class="leftSide" onclick="enterNotNum('π')">π</button>
+				<button class="leftThings" onclick="enterNum('√(')" >√</button>
+				<button class="leftThings" onclick="enterNotNum('!')">!</button>
+
+				<button class="rightSide" onclick="enterNum('1')">1</button>
+				<button onclick="enterNum('2')">2</button>
+				<button onclick="enterNum('3')">3</button>
+				<button onclick="enterOp('+')" style="background-color: deepskyblue;">+</button>
+			</div>
+			<div class="things">
+				<button class="leftSide" onclick="enterNotNum('X')" style=" font-family: Lucida Handwriting;">X</button>
+				<button class="leftThings" onclick="enterNotNum('Y')" style=" font-family: Lucida Handwriting;">Y</button>
+				<button class="leftThings" onclick="enterNotNum('Z')" style=" font-family: Lucida Handwriting;">Z</button>
+
+				<button class="rightSide" onclick="enterNum('0')">0</button>
+				<button onclick="enterNum('.')">.</button>
+				<button onclick="enterOp('=')" style="background-color: deepskyblue;">=</button>
+				<button onclick="enterOp('-')" style="background-color: deepskyblue;">-</button>
+			</div>
+			<div class="things">
+				<button class="leftSide" onclick="enterNum('log(')">Log</button>
+				<button class="leftThings" onclick="enterNum('log10(')">Log10</button>
+				<button class="leftThings" onclick="enterNotNum('%')">%</button>
+
+				<button class="rightSide" onclick="clearAll()">AC</button>
+				<button onclick="del()">DEL</button>
+			</div>
+			<div>
+				<button class="eval" onclick="equal()" style="background-color: deepskyblue;">Evaluate</button>
+			</div>
+			<div>
+				<button id="xButton" onclick="solveFor('X')">Solve For X</button>
+				<button id="yButton" onclick="solveFor('Y')">Solve For Y</button>
+				<button id="zButton" onclick="solveFor('Z')">Solve For Z</button>
+			</div>
+			<div>
+				<input id="answer" type="text" readonly></input>
+			</div>
+		</div>
+	</body>
+</html>
